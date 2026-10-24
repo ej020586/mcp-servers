@@ -1,4 +1,4 @@
-FROM node:22.12-alpine as builder
+FROM node:22.23.4-alpine as builder
 
 COPY src/redis /app
 
@@ -8,7 +8,7 @@ RUN --mount=type=cache,target=/root/.npm npm install
 
 RUN npm run build
 
-FROM node:22-alpine AS release
+FROM node:22.23.4-alpine AS release
 
 COPY --from=builder /app/build /app/build
 COPY --from=builder /app/package.json /app/package.json
