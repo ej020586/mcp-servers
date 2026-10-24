@@ -1,4 +1,4 @@
-FROM node:22.12-alpine AS builder
+FROM node:22.23.4-alpine AS builder
 
 COPY src/everart /app
 COPY tsconfig.json /tsconfig.json
@@ -7,7 +7,7 @@ WORKDIR /app
 
 RUN --mount=type=cache,target=/root/.npm npm install
 
-FROM node:22-alpine AS release
+FROM node:22.23.4-alpine AS release
 
 WORKDIR /app
 
